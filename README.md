@@ -21,17 +21,17 @@ The core task was to analyze three differently corrupted images, correctly diagn
 * **Target:** `noisy1.png` and `noisy2.png` (additive impulse/Gaussian noise).
 * **Implementation:** Developed custom functions to manually perform 2D convolution by iterating a filter mask (kernel) over every pixel of the image.
 * **Filters Implemented:**
-    * **Median Filter:** Highly effective for removing impulse ("salt and pepper") noise by replacing each pixel with the median value of its neighborhood.
-    * **Contraharmonic Mean Filter:** A flexible filter for removing specific types of impulse noise (salt *or* pepper) based on its order parameter `Q`.
-    * **Averaging Filters:** Used for smoothing out Gaussian noise.
+    * **Median Filter:** Highly effective for removing impulse ("salt and pepper") noise by replacing each pixel with the median value of its neighborhood.
+    * **Contraharmonic Mean Filter:** A flexible filter for removing specific types of impulse noise (salt *or* pepper) based on its order parameter `Q`.
+    * **Averaging Filters:** Used for smoothing out Gaussian noise.
 
 ### 3. Frequency Domain Restoration (from Scratch)
 * **Target:** `noisy3.tif` (periodic sinusoidal noise).
 * **Implementation:** Built a complete frequency-domain filtering pipeline:
-    1.  **Transform:** Compute the 2D DFT of the noisy image (e.g., via `fft2`) and shift the zero-frequency component to the center (`fftshift`).
-    2.  **Filter Design:** Manually created a 2D filter mask in the frequency domain. A **Notch Filter** (or Band-Reject filter) was designed to precisely target and zero-out the bright spots in the spectrum corresponding to the periodic noise.
-    3.  **Apply Filter:** Multiply the image's spectrum by the filter mask.
-    4.  **Inverse Transform:** Unshift the spectrum (`ifftshift`) and apply the Inverse DFT (`ifft2`) to reconstruct the final, restored image.
+    1.  **Transform:** Compute the 2D DFT of the noisy image (e.g., via `fft2`) and shift the zero-frequency component to the center (`fftshift`).
+    2.  **Filter Design:** Manually created a 2D filter mask in the frequency domain. A **Notch Filter** (or Band-Reject filter) was designed to precisely target and zero-out the bright spots in the spectrum corresponding to the periodic noise.
+    3.  **Apply Filter:** Multiply the image's spectrum by the filter mask.
+    4.  **Inverse Transform:** Unshift the spectrum (`ifftshift`) and apply the Inverse DFT (`ifft2`) to reconstruct the final, restored image.
 
 ---
 
@@ -40,17 +40,17 @@ The core task was to analyze three differently corrupted images, correctly diagn
 ### Restoration 1: Spatial Filtering (Impulse Noise)
 | Before (`noisy1.png`) | After (`recovered1.png`) |
 | :---: | :---: |
-| > **[Image: noisy1.png with salt and pepper noise]** | > **[Image: recovered1.png after median filtering]** |
+| ![Image: noisy1.png with salt and pepper noise](.media/noisy1.png) | ![Image: recovered1.png after median filtering](.media/recovered1.png) |
 
 ### Restoration 2: Spatial Filtering (Additive Noise)
 | Before (`noisy2.png`) | After (`recovered2.png`) |
 | :---: | :---: |
-| > **[Image: noisy2.png with additive noise]** | > **[Image: recovered2.png after spatial filtering]** |
+| ![Image: noisy2.png with additive noise](.media/noisy2.png) | ![Image: recovered2.png after spatial filtering](.media/recovered2.png) |
 
 ### Restoration 3: Frequency Filtering (Periodic Noise)
 | Before (`noisy3.tif`) | After (`recovered3.png`) |
 | :---: | :---: |
-| > **[Image: noisy3.tif with periodic line noise]** | > **[Image: recovered3.png after frequency notch filtering]** |
+| ![Image: noisy3.tif with periodic line noise](.media/noisy3.tif) | ![Image: recovered3.png after frequency notch filtering](.media/recovered3.png) |
 
 ---
 
