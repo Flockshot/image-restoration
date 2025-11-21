@@ -58,5 +58,5 @@ The core task was to analyze three differently corrupted images, correctly diagn
 
 1.  Open MATLAB.
 2.  Place the noisy images (`noisy1.png`, `noisy2.png`, `noisy3.tif`) in the same directory as the `.m` script.
-3.  Open and run the main script (`A2_StudentID.m`).
+3.  Open and run the main script (`image_restorer.m`).
 4.  The script will process all three images in sequence, displaying the results and saving them to `recovered1.png`, `recovered2.png`, and `recovered3.png` in the same directory.
