@@ -28,10 +28,10 @@ The core task was to analyze three differently corrupted images, correctly diagn
 ### 3. Frequency Domain Restoration (from Scratch)
 * **Target:** `noisy3.tif` (periodic sinusoidal noise).
 * **Implementation:** Built a complete frequency-domain filtering pipeline:
-    1.  **Transform:** Compute the 2D DFT of the noisy image (e.g., via `fft2`) and shift the zero-frequency component to the center (`fftshift`).
-    2.  **Filter Design:** Manually created a 2D filter mask in the frequency domain. A **Notch Filter** (or Band-Reject filter) was designed to precisely target and zero-out the bright spots in the spectrum corresponding to the periodic noise.
-    3.  **Apply Filter:** Multiply the image's spectrum by the filter mask.
-    4.  **Inverse Transform:** Unshift the spectrum (`ifftshift`) and apply the Inverse DFT (`ifft2`) to reconstruct the final, restored image.
+    1.  **Transform:** Compute the 2D DFT of the noisy image (e.g., via `fft2`) and shift the zero-frequency component to the center (`fftshift`).
+    2.  **Filter Design:** Manually created a 2D filter mask in the frequency domain. A **Notch Filter** (or Band-Reject filter) was designed to precisely target and zero-out the bright spots in the spectrum corresponding to the periodic noise.
+    3.  **Apply Filter:** Multiply the image's spectrum by the filter mask.
+    4.  **Inverse Transform:** Unshift the spectrum (`ifftshift`) and apply the Inverse DFT (`ifft2`) to reconstruct the final, restored image.
 
 ---
 
